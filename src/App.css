@@ -21,3 +21,22 @@
   grid-template-columns: 1fr 1fr;
   grid-gap: 20px;
 }
+
+.star{
+  color: orange;
+}
+
+.rate-star{
+  color: purple;
+  cursor: pointer;
+}
+
+.rate-container{
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 2px solid purple;
+}
+
+.rate-container .fa-star{
+  font-size: 1.2rem;
+}

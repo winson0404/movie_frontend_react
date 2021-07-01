@@ -1,16 +1,12 @@
 import { useState, useEffect } from 'react';
-import MovieList from './components/MovieList';
-import MovieDetails from './components/MovieDetails';
+import MovieList from './components/MovieList/';
+import MovieDetails from './components/MovieDetails/';
 import './App.css';
 
 function App() {
 
   const [movies, setMovie] = useState([]);
   const [selectedMovie, setSelectedMovie] = useState();
-
-  const movieCLicked = (movie)=>{
-    setSelectedMovie(movie);
-  }
 
   useEffect(()=>{
     fetch("http://127.0.0.1:8000/api/movies/", {
@@ -25,6 +21,14 @@ function App() {
     .catch(err => console.log(err))
   }, [])
 
+  const movieCLicked = (movie)=>{
+    setSelectedMovie(movie);
+  }
+
+  const updateMovie = movie =>{
+    setSelectedMovie(movie);
+  }
+
   return (
     <div className="App">
       <header className="App-header">
@@ -32,7 +36,7 @@ function App() {
       </header>
       <div className = "layout">
         <MovieList movies={movies} movieCLicked={movieCLicked}/>
-        <MovieDetails movie={selectedMovie}/>
+        <MovieDetails movie={selectedMovie} updateMovie={updateMovie}/>
       </div>
     </div>
   );
